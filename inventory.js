@@ -4,14 +4,15 @@ const inventory = {
 };
 
 const checkInventory = (order) => {
-  return new Promise((resolve, rejetct) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       let inStock = order.every((item) => inventory[item[0]] >= item[1]);
+      // .every returns a boolean value
 
       if (inStock) {
         resolve("Sikeres vásárlás!");
       } else {
-        rejetct("Sikertelen vásárlás!");
+        reject("Sikertelen vásárlás!");
       }
     }, 2000);
   });
